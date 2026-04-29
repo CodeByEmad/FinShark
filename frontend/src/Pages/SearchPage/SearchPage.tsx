@@ -12,7 +12,7 @@ const SearchPage = (props: Props) => {
   const [search, setSearch] = useState<string>("");
   const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
-  const [serverEror, setServerEror] = useState<string>("");
+  const [serverError, setServerError] = useState<string>("");
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
       setSearch(e.target.value);
@@ -39,7 +39,7 @@ const SearchPage = (props: Props) => {
     e.preventDefault();
       const result = await searchCompanies(search);
       if (typeof result == "string"){
-        setServerEror(result);
+        setServerError(result);
       }
       else if (Array.isArray(result.data)) {
         setSearchResult(result.data);
@@ -61,7 +61,7 @@ const SearchPage = (props: Props) => {
       searchResults={searchResult} 
       onPortfolioCreate={onPortfolioCreate}
       />
-      {serverError && <h1>{serverEror}</h1>}
+      {serverError && <h1>{serverError}</h1>}
     </div>
   )
 }
