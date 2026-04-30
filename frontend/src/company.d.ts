@@ -250,14 +250,14 @@ export interface CompanySearch {
     revenuePerShareTTM: number;
     netIncomePerShareTTM: number;
     operatingCashFlowPerShareTTM: number;
-    freeCashFlowPerShareTTM: number;
+    freeCashFlowYield: number;
     cashPerShareTTM: number;
     bookValuePerShareTTM: number;
     tangibleBookValuePerShareTTM: number;
     shareholdersEquityPerShareTTM: number;
     interestDebtPerShareTTM: number;
-    marketCapTTM: number;
-    enterpriseValueTTM: number;
+    marketCap: number;
+    enterpriseValue: number;
     peRatioTTM: number;
     priceToSalesRatioTTM: number;
     pocfratioTTM: number;
@@ -273,7 +273,7 @@ export interface CompanySearch {
     debtToEquityTTM: number;
     debtToAssetsTTM: number;
     netDebtToEBITDATTM: number;
-    currentRatioTTM: number;
+    currentRatio: number;
     interestCoverageTTM: number;
     incomeQualityTTM: number;
     dividendYieldTTM: number;
@@ -286,9 +286,9 @@ export interface CompanySearch {
     capexToRevenueTTM: number;
     capexToDepreciationTTM: number;
     stockBasedCompensationToRevenueTTM: number;
-    grahamNumberTTM: number;
+    grahamNumber: number;
     roicTTM: number;
-    returnOnTangibleAssetsTTM: number;
+    returnOnTangibleAssets: number;
     grahamNetNetTTM: number;
     workingCapitalTTM: number;
     tangibleAssetValueTTM: number;
@@ -303,7 +303,7 @@ export interface CompanySearch {
     receivablesTurnoverTTM: number;
     payablesTurnoverTTM: number;
     inventoryTurnoverTTM: number;
-    roeTTM: number;
+    returnOnEquity: number;
     capexPerShareTTM: number;
     dividendPerShareTTM: number;
     debtToMarketCapTTM: number;
