@@ -4,6 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 import { getKeyMetrics } from '../../api';
 import RatioList from '../RatioList/RatioList';
 import Spinner from '../Spinner/Spinner';
+import { formatLargeNonMonetaryNumber, formatRatio } from '../../Helpers/NumberFormatting';
 
 type Props = {}
 
@@ -11,69 +12,69 @@ const tableConfig = [
   {
     label: "Market Cap",
     render: (company: CompanyKeyMetrics) =>
-      (company.marketCap),
+      formatLargeNonMonetaryNumber(company.marketCap),
     subTitle: "Total value of all a company's shares of stock",
   },
   {
     label: "Current Ratio",
     render: (company: CompanyKeyMetrics) =>
-      (company.currentRatio),
+      formatRatio(company.currentRatio),
     subTitle:
       "Measures the companies ability to pay short term debt obligations",
   },
   {
     label: "Return On Equity",
-    render: (company: CompanyKeyMetrics) => (company.returnOnEquity),
+    render: (company: CompanyKeyMetrics) => formatRatio(company.returnOnEquity),
     subTitle:
       "Return on equity is the measure of a company's net income divided by its shareholder's equity",
   },
   {
     label: "Return On Assets",
     render: (company: CompanyKeyMetrics) =>
-      (company.returnOnTangibleAssets),
+      formatRatio(company.returnOnAssets),
     subTitle:
       "Return on assets is the measure of how effective a company is using its assets",
   },
   {
     label: "Free Cashflow Per Share",
     render: (company: CompanyKeyMetrics) =>
-      (company.freeCashFlowYield),
+      formatRatio(company.freeCashFlowYield),
     subTitle:
       "Return on assets is the measure of how effective a company is using its assets",
   },
-  // {
-  //   label: "Book Value Per Share TTM",
-  //   render: (company: CompanyKeyMetrics) =>
-  //     (company.bookValuePerShareTTM),
-  //   subTitle:
-  //     "Book value per share indicates a firm's net asset value (total assets - total liabilities) on per share basis",
-  // },
-  // {
-  //   label: "Divdend Yield TTM",
-  //   render: (company: CompanyKeyMetrics) =>
-  //     (company.dividendYieldTTM),
-  //   subTitle: "Shows how much a company pays each year relative to stock price",
-  // },
-  // {
-  //   label: "Capex Per Share TTM",
-  //   render: (company: CompanyKeyMetrics) =>
-  //     (company.capexPerShareTTM),
-  //   subTitle:
-  //     "Capex is used by a company to aquire, upgrade, and maintain physical assets",
-  // },
+  {
+    label: "Book Value Per Share TTM",
+    render: (company: CompanyKeyMetrics) =>
+      formatRatio(company.returnOnTangibleAssets),
+    subTitle:
+      "Book value per share indicates a firm's net asset value (total assets - total liabilities) on per share basis",
+  },
+  {
+    label: "Divdend Yield TTM",
+    render: (company: CompanyKeyMetrics) =>
+      formatRatio(company.earningsYield),
+    subTitle: "Shows how much a company pays each year relative to stock price",
+  },
+  {
+    label: "Capex Per Share TTM",
+    render: (company: CompanyKeyMetrics) =>
+      formatRatio(company.capexToOperatingCashFlow),
+    subTitle:
+      "Capex is used by a company to aquire, upgrade, and maintain physical assets",
+  },
   {
     label: "Graham Number",
     render: (company: CompanyKeyMetrics) =>
-      (company.grahamNumber),
+      formatRatio(company.grahamNumber),
     subTitle:
       "This is the upperbouind of the price range that a defensive investor should pay for a stock",
   },
-  // {
-  //   label: "PE Ratio",
-  //   render: (company: CompanyKeyMetrics) => (company.peRatioTTM),
-  //   subTitle:
-  //     "This is the upperbouind of the price range that a defensive investor should pay for a stock",
-  // },
+  {
+    label: "PE Ratio",
+    render: (company: CompanyKeyMetrics) => formatRatio(company.currentRatio),
+    subTitle:
+      "This is the upperbouind of the price range that a defensive investor should pay for a stock",
+  },
 ];
 
 const CompanyProfile = (props: Props) => {

@@ -11,7 +11,7 @@ export interface CompanySearch {
     price: number;
     beta: number;
     volAvg: number;
-    mktCap: number;
+    marketCap: number;
     lastDiv: number;
     range: string;
     changes: number;
@@ -109,6 +109,7 @@ export interface CompanySearch {
     date: string;
     symbol: string;
     reportedCurrency: string;
+    netIncomeFromContinuingOperations: number;
     cik: string;
     fillingDate: string;
     acceptedDate: string;
@@ -129,6 +130,7 @@ export interface CompanySearch {
     interestExpense: number;
     depreciationAndAmortization: number;
     ebitda: number;
+    bottomLineNetIncome: number;
     ebitdaratio: number;
     operatingIncome: number;
     operatingIncomeRatio: number;
@@ -136,10 +138,11 @@ export interface CompanySearch {
     incomeBeforeTax: number;
     incomeBeforeTaxRatio: number;
     incomeTaxExpense: number;
+    grossProfit: number;
     netIncome: number;
     netIncomeRatio: number;
     eps: number;
-    epsdiluted: number;
+    epsDiluted: number;
     weightedAverageShsOut: number;
     weightedAverageShsOutDil: number;
     link: string;
@@ -215,6 +218,7 @@ export interface CompanySearch {
     netIncome: number;
     depreciationAndAmortization: number;
     deferredIncomeTax: number;
+    otherInvestingActivities: number;
     stockBasedCompensation: number;
     changeInWorkingCapital: number;
     accountsReceivables: number;
@@ -223,6 +227,7 @@ export interface CompanySearch {
     otherWorkingCapital: number;
     otherNonCashItems: number;
     netCashProvidedByOperatingActivities: number;
+    otherFinancingActivities: number;
     investmentsInPropertyPlantAndEquipment: number;
     acquisitionsNet: number;
     purchasesOfInvestments: number;
@@ -291,7 +296,6 @@ export interface CompanySearch {
     returnOnTangibleAssets: number;
     grahamNetNetTTM: number;
     workingCapitalTTM: number;
-    tangibleAssetValueTTM: number;
     netCurrentAssetValueTTM: number;
     investedCapitalTTM: number;
     averageReceivablesTTM: number;
@@ -304,6 +308,10 @@ export interface CompanySearch {
     payablesTurnoverTTM: number;
     inventoryTurnoverTTM: number;
     returnOnEquity: number;
+    earningsYield: number;
+    returnOnAssets: number;
+    tangibleAssetValue: number;
+    capexToOperatingCashFlow: number;
     capexPerShareTTM: number;
     dividendPerShareTTM: number;
     debtToMarketCapTTM: number;
@@ -332,11 +340,11 @@ export interface CompanySearch {
   }
   
   export interface CompanyTenK {
-    symbol: string;
-    fillingDate: string;
-    acceptedDate: string;
+    ticker: string;
+    filing_date: string;
+    period_end: string;
     cik: string;
-    type: string;
-    link: string;
-    finalLink: string;
+    text: string;
+    section: string;
+    filing_url: string;
   }

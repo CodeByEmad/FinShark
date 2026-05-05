@@ -8,6 +8,7 @@ import Tile from '../../Components/Tile/Tile';
 import Spinner from '../../Components/Spinner/Spinner';
 import CompanyFinder from '../../Components/CompFinder/CompFinder';
 import CompFinder from '../../Components/CompFinder/CompFinder';
+import TenKFinder from '../../Components/TenKFinder/TenKFinder';
 
 interface Props {}
 
@@ -32,10 +33,14 @@ const CompanyPage = (props: Props) => {
       <Sidebar />
       <CompanyDashboard ticker={ticker!}>
         <Tile title="Company Name" subTitle={company.companyName}/>
-        <Tile title="Price" subTitle={company.price.toString()}/>
+        <Tile title="Price" subTitle={"$" + company.price.toString()}/>
+        <Tile title="Market Cap" subTitle={"$" + company.marketCap.toString()} />
         <Tile title="Sector" subTitle={company.sector}/>
-        {/* <Tile title="Market Cap" subTitle={company.mktCap.toString()}/> */}
         <CompFinder ticker={company.symbol} />
+        <TenKFinder ticker={company.symbol} />
+        <p className="bg-white shadow rounded text-medium font-medium text-gray-900 p-3 mt-1 m-4">
+              {company.description}
+            </p>
       </CompanyDashboard>
     </div>
     ) : (

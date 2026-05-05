@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CompanyBalanceSheet, CompanyCashFlow, CompanyCompData, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch } from "./company"
+import { CompanyBalanceSheet, CompanyCashFlow, CompanyCompData, CompanyIncomeStatement, CompanyKeyMetrics, CompanyProfile, CompanySearch, CompanyTenK } from "./company"
 
 interface SearchResponse {
     data: CompanySearch[];
@@ -89,6 +89,18 @@ export const getCompData = async (query: string) => {
     try{
         const data = await axios.get<CompanyCompData[]>(
             `https://financialmodelingprep.com/stable/stock-peers?symbol=${query}&apikey=${process.env.REACT_APP_API_KEY}`
+        )
+        return data;
+    }
+    catch (error: any) {
+        console.log("error message from API: ",error.message);
+    }
+};
+
+export const getTenK = async (query: string) => {
+    try{
+        const data = await axios.get<{ results: CompanyTenK[] }>(
+            `https://api.massive.com/stocks/filings/10-K/vX/sections?ticker=${query}&section=business&limit=10&sort=period_end.desc&apiKey=${process.env.REACT_APP_MASSIVE_API_KEY}`
         )
         return data;
     }
